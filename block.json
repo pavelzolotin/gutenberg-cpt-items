@@ -1,0 +1,17 @@
+{
+	"apiVersion": 2,
+	"name": "block-test/post-types",
+	"version": "0.1.0",
+	"title": "CPT-block",
+	"category": "widgets",
+	"icon": "admin-post",
+	"description": "Dynamic block which display custom post types.",
+	"keywords": [ "Post" ],
+	"supports": {
+		"html": false
+	},
+	"textdomain": "post-types",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
