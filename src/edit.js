@@ -39,7 +39,7 @@ export default function Edit() {
 													{ post.title.rendered }
 												</RawHTML>
 											) : (
-												__( '(No title', 'post-types' )
+												__( '(No title', 'cpt-items' )
 											) }
 										</a>
 									</h5>

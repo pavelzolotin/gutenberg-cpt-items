@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       CPT-block
+ * Plugin Name:       CPT items block
  * Description:       Dynamic block which display custom post types.
  * Requires at least: 5.7
  * Requires PHP:      7.0
@@ -8,7 +8,7 @@
  * Author:            Author
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       post-types
+ * Text Domain:       cpt-items
  *
  * @package           block-test
  */
@@ -21,7 +21,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 
-function render_post_types_block($attributes) {
+function render_cpt_items_block($attributes) {
 
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
@@ -36,34 +36,34 @@ function render_post_types_block($attributes) {
 
     ob_start();
 ?>
-    <div class="wp-block-block-test-post-types">
-        <div class="wp-block-block-test-post-types__container">
+    <div class="wp-block-block-test-cpt-items">
+        <div class="wp-block-block-test-cpt-items__container">
             <?php if ( $recent_posts->have_posts() ):
 		        while($recent_posts->have_posts() ): $recent_posts->the_post();
 			    $post_id = get_the_ID();
 			    $title = get_the_title();
-			    $title = $title ? $title : __('(No title)','post-types');
+			    $title = $title ? $title : __('(No title)','cpt-items');
 			    $permalink = get_permalink( );
 			    $excerpt = get_the_excerpt(  );
 			    $thumb = get_the_post_thumbnail( $post_id, 'full' );
-			    $cur_terms = get_the_terms( $post_id, 'game' );
+			    $cur_terms = get_the_terms( $post_id, 'block-game' );
 		    ?>
-                <div class="wp-block-block-test-post-types__card">
-                    <div class="wp-block-block-test-post-types__card-img-wrapper">
+                <div class="wp-block-block-test-cpt-items__card">
+                    <div class="wp-block-block-test-cpt-items__card-img-wrapper">
                         <a href="<?php echo esc_url($permalink) ?>">
                             <?php echo $thumb; ?>
                         </a>
                     </div>
-                    <h5 class="wp-block-block-test-post-types__card-title">
+                    <h5 class="wp-block-block-test-cpt-items__card-title">
                         <a href="<?php echo esc_url($permalink) ?>">
                             <?php echo esc_html($title); ?>
                         </a>
                     </h5>
-                    <p class="wp-block-block-test-post-types__card-text"><?php echo esc_html( $excerpt ) ?></p>
-                    <div class="wp-block-block-test-post-types__card-tags">
+                    <p class="wp-block-block-test-cpt-items__card-text"><?php echo esc_html( $excerpt ) ?></p>
+                    <div class="wp-block-block-test-cpt-items__card-tags">
                         <?php if(is_array( $cur_terms )): ?>
                             <?php foreach( $cur_terms as $cur_term ): ?>
-                                <a class="wp-block-block-test-post-types__card-tags--tag" href="<?php echo esc_url(get_term_link( $cur_term->term_id, $cur_term->taxonomy )) ?>"><?php echo esc_attr($cur_term->name) ?></a>
+                                <a class="wp-block-block-test-cpt-items__card-tags--tag" href="<?php echo esc_url(get_term_link( $cur_term->term_id, $cur_term->taxonomy )) ?>"><?php echo esc_attr($cur_term->name) ?></a>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
@@ -74,7 +74,7 @@ function render_post_types_block($attributes) {
 		    wp_reset_postdata();
 		    endif;
 		?>
-        <div class="wp-block-block-test-post-types__pagination">
+        <div class="wp-block-block-test-cpt-items__pagination">
             <?php
                 $big = 100;
 
@@ -93,16 +93,16 @@ function render_post_types_block($attributes) {
 	return $content;
 }
 
-function post_types_block_init() {
+function cpt_items_block_init() {
 	register_block_type( __DIR__ , array (
-        'render_callback' => 'render_post_types_block'
+        'render_callback' => 'render_cpt_items_block'
     ));
 }
-add_action( 'init', 'post_types_block_init' );
+add_action( 'init', 'cpt_items_block_init' );
 
 
-add_action( 'init', 'post_types_create_taxonomy' );
-function post_types_create_taxonomy(){
+add_action( 'init', 'cpt_items_create_taxonomy' );
+function cpt_items_create_taxonomy(){
 
 	register_taxonomy( 'block-game',  'block-players', [
 		'label'                 => 'Game',
@@ -134,7 +134,7 @@ function post_types_create_taxonomy(){
 	] );
 }
 
-function post_types_create_posttype() {
+function cpt_items_create_posttype() {
 
     register_post_type( 'block-players',
         array(
@@ -152,4 +152,4 @@ function post_types_create_posttype() {
     );
 }
 
-add_action( 'init', 'post_types_create_posttype', 0 );
+add_action( 'init', 'cpt_items_create_posttype', 0 );

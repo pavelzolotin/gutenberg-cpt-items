@@ -3,7 +3,7 @@ import './style.scss';
 import Edit from './edit';
 import save from './save';
 
-registerBlockType( 'block-test/post-types', {
+registerBlockType( 'block-test/cpt-items', {
 	edit: Edit,
 	save,
 } );

@@ -1,25 +1,25 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-.entry-content .wp-block-block-test-post-types:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+.entry-content .wp-block-block-test-cpt-items:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
   max-width: 1200px;
   margin: 0 auto;
 }
-.wp-block-block-test-post-types__container {
+.wp-block-block-test-cpt-items__container {
   display: flex;
   flex-wrap: wrap;
   -moz-column-gap: 15px;
        column-gap: 15px;
   margin: -10px;
 }
-.wp-block-block-test-post-types__card {
+.wp-block-block-test-cpt-items__card {
   flex: 1 1 21%;
   margin: 10px;
 }
-.wp-block-block-test-post-types__card-img-wrapper > a > img {
+.wp-block-block-test-cpt-items__card-img-wrapper > a > img {
   margin-bottom: 10px;
 }
-.wp-block-block-test-post-types__card-title > a {
+.wp-block-block-test-cpt-items__card-title > a {
   font-size: 24px;
   line-height: 1;
   font-weight: 400;
@@ -27,14 +27,14 @@
   margin-bottom: 10px;
   text-decoration: none;
 }
-.wp-block-block-test-post-types__card-text {
+.wp-block-block-test-cpt-items__card-text {
   font-size: 18px;
   line-height: 24px;
 }
-.wp-block-block-test-post-types__card-tags {
+.wp-block-block-test-cpt-items__card-tags {
   text-transform: lowercase;
 }
-.wp-block-block-test-post-types__card-tags-tag {
+.wp-block-block-test-cpt-items__card-tags-tag {
   display: inline-block;
   text-decoration: none;
   font-weight: 700;
@@ -44,16 +44,16 @@
   background-color: #00aeef;
   color: #333333;
 }
-.wp-block-block-test-post-types__pagination {
+.wp-block-block-test-cpt-items__pagination {
   display: flex;
   justify-content: center;
   max-width: 1200px;
   margin-top: 50px;
 }
-.wp-block-block-test-post-types__pagination > a.page-numbers:focus {
+.wp-block-block-test-cpt-items__pagination > a.page-numbers:focus {
   background: transparent !important;
 }
-.wp-block-block-test-post-types__pagination > .page-numbers {
+.wp-block-block-test-cpt-items__pagination > .page-numbers {
   font-size: 24px;
   line-height: 1;
   font-weight: 400;
@@ -61,7 +61,7 @@
   text-decoration: none;
   margin-right: 10px;
 }
-.wp-block-block-test-post-types__pagination > .current {
+.wp-block-block-test-cpt-items__pagination > .current {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
