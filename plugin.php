@@ -36,7 +36,6 @@ function cpt_items_render_cpt_items_block( $attributes ) {
 
     $posts = '<div class="wp-block-block-test-cpt-items">';
         $posts .= '<div class="wp-block-block-test-cpt-items__container">';
-
             if ($recent_posts->have_posts()) {
                 while( $recent_posts->have_posts() ): $recent_posts->the_post();
 
@@ -59,7 +58,7 @@ function cpt_items_render_cpt_items_block( $attributes ) {
                         $posts .= '<div class="wp-block-block-test-cpt-items__card-tags">';
                             if(is_array( $cur_terms )):
                                 foreach( $cur_terms as $cur_term ):
-                                    $posts .= '<a class="wp-block-block-test-cpt-items__card-tag" . href="' . esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) . '">' . esc_html( $cur_term->name ) . '</a>';
+                                    $posts .= '<a class="wp-block-block-test-cpt-items__card-tag" . href="' . esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) . '">' .'#' . esc_html( $cur_term->name ) . '</a>';
                                 endforeach;
                             endif;
                         $posts .= '</div>';
@@ -75,7 +74,6 @@ function cpt_items_render_cpt_items_block( $attributes ) {
                 'current' => max( 1, get_query_var( 'paged' ) ),
                 'total'   => $recent_posts->max_num_pages
             ) );
-
         $posts .= '</div>';
     $posts .= '</div>';
 
