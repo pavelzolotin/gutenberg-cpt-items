@@ -21,9 +21,9 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 
-function cpt_items_render_cpt_items_block($attributes) {
+function cpt_items_render_cpt_items_block( $attributes ) {
 
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 	$args = array(
         'posts_per_page' => 8,
@@ -32,38 +32,43 @@ function cpt_items_render_cpt_items_block($attributes) {
 		'post_type' => 'cpt_players',
 	);
 
-	$recent_posts = new WP_Query($args);
+	$recent_posts = new WP_Query( $args );
 
     ob_start();
 ?>
     <div class="wp-block-block-test-cpt-items">
         <div class="wp-block-block-test-cpt-items__container">
             <?php if ( $recent_posts->have_posts() ):
-		        while($recent_posts->have_posts() ): $recent_posts->the_post();
+		        while( $recent_posts->have_posts() ): $recent_posts->the_post();
 			    $post_id = get_the_ID();
 			    $title = get_the_title();
-			    $title = $title ? $title : __('(No title)','cpt-items');
-			    $permalink = get_permalink( );
-			    $excerpt = get_the_excerpt(  );
+			    $title = $title ? $title : __( '(No title)','cpt-items' );
+			    $permalink = get_permalink();
+			    $excerpt = get_the_excerpt();
 			    $thumb = get_the_post_thumbnail( $post_id, 'full' );
 			    $cur_terms = get_the_terms( $post_id, 'cpt_game' );
 		    ?>
                 <div class="wp-block-block-test-cpt-items__card">
                     <div class="wp-block-block-test-cpt-items__card__image">
-                        <a href="<?php echo esc_url($permalink) ?>">
+                        <a href="<?php echo esc_url( $permalink ) ?>">
                             <?php echo $thumb; ?>
                         </a>
                     </div>
                     <h5 class="wp-block-block-test-cpt-items__card-title">
-                        <a href="<?php echo esc_url($permalink) ?>">
-                            <?php echo esc_html($title); ?>
+                        <a href="<?php echo esc_url( $permalink ) ?>">
+                            <?php echo esc_html( $title ); ?>
                         </a>
                     </h5>
-                    <p class="wp-block-block-test-cpt-items__card-text"><?php echo esc_html( $excerpt ) ?></p>
+                    <p class="wp-block-block-test-cpt-items__card-text">
+                        <?php echo esc_html( $excerpt ) ?>
+                    </p>
                     <div class="wp-block-block-test-cpt-items__card-tags">
                         <?php if(is_array( $cur_terms )): ?>
                             <?php foreach( $cur_terms as $cur_term ): ?>
-                                <a class="wp-block-block-test-cpt-items__card-tag" href="<?php echo esc_url(get_term_link( $cur_term->term_id, $cur_term->taxonomy )) ?>"><?php echo esc_html($cur_term->name) ?></a>
+                                <a class="wp-block-block-test-cpt-items__card-tag"
+                                    href="<?php echo esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) ?>">
+                                    <?php echo esc_html( $cur_term->name ) ?>
+                                </a>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
@@ -74,7 +79,9 @@ function cpt_items_render_cpt_items_block($attributes) {
 		    wp_reset_postdata();
             else:
         ?>
-            <p><?php __('No players', 'cpt-items') ?></p>
+            <p>
+                <?php __( 'No players', 'cpt-items' ) ?>
+            </p>
         <?php
 		    endif;
 		?>
@@ -84,7 +91,7 @@ function cpt_items_render_cpt_items_block($attributes) {
 
                 echo paginate_links( array(
                     'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                    'current' => max( 1, get_query_var('paged') ),
+                    'current' => max( 1, get_query_var( 'paged' ) ),
                     'total'   => $recent_posts->max_num_pages
                 ) );
             ?>
