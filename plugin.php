@@ -34,74 +34,54 @@ function cpt_items_render_cpt_items_block( $attributes ) {
 
 	$recent_posts = new WP_Query( $args );
 
-    ob_start();
-?>
-    <div class="wp-block-block-test-cpt-items">
-        <div class="wp-block-block-test-cpt-items__container">
-            <?php if ( $recent_posts->have_posts() ):
-		        while( $recent_posts->have_posts() ): $recent_posts->the_post();
-			    $post_id = get_the_ID();
-			    $title = get_the_title();
-			    $title = $title ? $title : __( '(No title)','cpt-items' );
-			    $permalink = get_permalink();
-			    $excerpt = get_the_excerpt();
-			    $thumb = get_the_post_thumbnail( $post_id, 'full' );
-			    $cur_terms = get_the_terms( $post_id, 'cpt_game' );
-		    ?>
-                <div class="wp-block-block-test-cpt-items__card">
-                    <div class="wp-block-block-test-cpt-items__card__image">
-                        <a href="<?php echo esc_url( $permalink ) ?>">
-                            <?php echo $thumb; ?>
-                        </a>
-                    </div>
-                    <h5 class="wp-block-block-test-cpt-items__card-title">
-                        <a href="<?php echo esc_url( $permalink ) ?>">
-                            <?php echo esc_html( $title ); ?>
-                        </a>
-                    </h5>
-                    <p class="wp-block-block-test-cpt-items__card-text">
-                        <?php echo esc_html( $excerpt ) ?>
-                    </p>
-                    <div class="wp-block-block-test-cpt-items__card-tags">
-                        <?php if(is_array( $cur_terms )): ?>
-                            <?php foreach( $cur_terms as $cur_term ): ?>
-                                <a class="wp-block-block-test-cpt-items__card-tag"
-                                    href="<?php echo esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) ?>">
-                                    <?php echo esc_html( $cur_term->name ) ?>
-                                </a>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-		    <?php endwhile; ?>
-        </div>
-        <?php
-		    wp_reset_postdata();
-            else:
-        ?>
-            <p>
-                <?php __( 'No players', 'cpt-items' ) ?>
-            </p>
-        <?php
-		    endif;
-		?>
-        <div class="wp-block-block-test-cpt-items__pagination">
-            <?php
-                $big = 100;
+    $posts = '<div class="wp-block-block-test-cpt-items">';
+        $posts .= '<div class="wp-block-block-test-cpt-items__container">';
 
-                echo paginate_links( array(
-                    'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                    'current' => max( 1, get_query_var( 'paged' ) ),
-                    'total'   => $recent_posts->max_num_pages
-                ) );
-            ?>
-        </div>
-    </div>
-    <?php
-	$content = ob_get_contents();
-	ob_end_clean();
+            if ($recent_posts->have_posts()) {
+                while( $recent_posts->have_posts() ): $recent_posts->the_post();
 
-	return $content;
+                    $post_id = get_the_ID();
+                    $title = get_the_title();
+                    $title = $title ? $title : __( '(No title)','cpt-items' );
+                    $permalink = get_permalink();
+                    $excerpt = get_the_excerpt();
+                    $thumb = get_the_post_thumbnail( $post_id, 'full' );
+                    $cur_terms = get_the_terms( $post_id, 'cpt_game' );
+
+                    $posts .= '<div class="wp-block-block-test-cpt-items__card">';
+                        $posts .= '<div class="wp-block-block-test-cpt-items__card__image">';
+                            $posts .= '<a href="' . esc_url($permalink) . '">' . $thumb . '</a>';
+                        $posts .= '</div>';
+                        $posts .= '<h5 class="wp-block-block-test-cpt-items__card-title">';
+                            $posts .= '<a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a>';
+                        $posts .= '</h5>';
+                        $posts .= '<p class="wp-block-block-test-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
+                        $posts .= '<div class="wp-block-block-test-cpt-items__card-tags">';
+                            if(is_array( $cur_terms )):
+                                foreach( $cur_terms as $cur_term ):
+                                    $posts .= '<a class="wp-block-block-test-cpt-items__card-tag" . href="' . esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) . '">' . esc_html( $cur_term->name ) . '</a>';
+                                endforeach;
+                            endif;
+                        $posts .= '</div>';
+                    $posts .= '</div>';
+                endwhile;
+            } else {
+                $posts .= '<p>' . __( 'No players', 'cpt-items' ) . '</p>';
+            }
+        $posts .= '</div>';
+        $posts .= '<div class="wp-block-block-test-cpt-items__pagination">';
+            $posts .= paginate_links( array(
+                'base'    => str_replace( 100, '%#%', esc_url( get_pagenum_link( 100 ) ) ),
+                'current' => max( 1, get_query_var( 'paged' ) ),
+                'total'   => $recent_posts->max_num_pages
+            ) );
+
+        $posts .= '</div>';
+    $posts .= '</div>';
+
+    wp_reset_postdata();
+    return $posts;
+
 }
 
 function cpt_items_block_init() {
