@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       CPT items
+ * Plugin Name:       Gutenberg CPT items
  * Description:       Dynamic block which display custom post types.
  * Requires at least: 5.7
  * Requires PHP:      7.0
@@ -8,9 +8,7 @@
  * Author:            Author
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       cpt-items
- *
- * @package           block-test
+ * Text Domain:       gutenberg-cpt-items
  */
 
 /**
@@ -21,7 +19,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 
-function cpt_items_render_cpt_items_block( $attributes ) {
+function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
 
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
@@ -34,41 +32,41 @@ function cpt_items_render_cpt_items_block( $attributes ) {
 
 	$recent_posts = new WP_Query( $args );
 
-    $posts = '<div class="wp-block-block-test-cpt-items">';
-        $posts .= '<div class="wp-block-block-test-cpt-items__container">';
+    $posts = '<div class="wp-block-gutenberg-cpt-items">';
+        $posts .= '<div class="wp-block-gutenberg-cpt-items__container">';
             if ($recent_posts->have_posts()) {
                 while( $recent_posts->have_posts() ): $recent_posts->the_post();
 
                     $post_id = get_the_ID();
                     $title = get_the_title();
-                    $title = $title ? $title : __( '(No title)','cpt-items' );
+                    $title = $title ? $title : __( '(No title)','gutenberg-cpt-items' );
                     $permalink = get_permalink();
                     $excerpt = get_the_excerpt();
                     $thumb = get_the_post_thumbnail( $post_id, 'full' );
                     $cur_terms = get_the_terms( $post_id, 'cpt_game' );
 
-                    $posts .= '<div class="wp-block-block-test-cpt-items__card">';
-                        $posts .= '<div class="wp-block-block-test-cpt-items__card__image">';
+                    $posts .= '<div class="wp-block-gutenberg-cpt-items__card">';
+                        $posts .= '<div class="wp-block-gutenberg-cpt-items__card__image">';
                             $posts .= '<a href="' . esc_url($permalink) . '">' . $thumb . '</a>';
                         $posts .= '</div>';
-                        $posts .= '<h5 class="wp-block-block-test-cpt-items__card-title">';
+                        $posts .= '<h5 class="wp-block-gutenberg-cpt-items__card-title">';
                             $posts .= '<a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a>';
                         $posts .= '</h5>';
-                        $posts .= '<p class="wp-block-block-test-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
-                        $posts .= '<div class="wp-block-block-test-cpt-items__card-tags">';
+                        $posts .= '<p class="wp-block-gutenberg-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
+                        $posts .= '<div class="wp-block-gutenberg-cpt-items__card-tags">';
                             if(is_array( $cur_terms )):
                                 foreach( $cur_terms as $cur_term ):
-                                    $posts .= '<a class="wp-block-block-test-cpt-items__card-tag" . href="' . esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) . '">' .'#' . esc_html( $cur_term->name ) . '</a>';
+                                    $posts .= '<a class="wp-block-gutenberg-cpt-items__card-tag" . href="' . esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) . '">' .'#' . esc_html( $cur_term->name ) . '</a>';
                                 endforeach;
                             endif;
                         $posts .= '</div>';
                     $posts .= '</div>';
                 endwhile;
             } else {
-                $posts .= '<p>' . __( 'No players', 'cpt-items' ) . '</p>';
+                $posts .= '<p>' . __( 'No players', 'gutenberg-cpt-items' ) . '</p>';
             }
         $posts .= '</div>';
-        $posts .= '<div class="wp-block-block-test-cpt-items__pagination">';
+        $posts .= '<div class="wp-block-gutenberg-cpt-items__pagination">';
             $posts .= paginate_links( array(
                 'base'    => str_replace( 100, '%#%', esc_url( get_pagenum_link( 100 ) ) ),
                 'current' => max( 1, get_query_var( 'paged' ) ),
@@ -82,10 +80,10 @@ function cpt_items_render_cpt_items_block( $attributes ) {
 
 }
 
-function cpt_items_block_init() {
+function gutenberg_cpt_items_block_init() {
 	register_block_type( __DIR__,  array(
-		'render_callback' => 'cpt_items_render_cpt_items_block'
+		'render_callback' => 'gutenberg_cpt_items_render_recent_posts_block'
 	) );
 }
 
-add_action( 'init', 'cpt_items_block_init' );
+add_action( 'init', 'gutenberg_cpt_items_block_init' );

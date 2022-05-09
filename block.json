@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "block-test/cpt-items",
+	"name": "gutenberg/cpt-items",
 	"version": "0.1.0",
 	"title": "Custom Post Types",
 	"category": "widgets",

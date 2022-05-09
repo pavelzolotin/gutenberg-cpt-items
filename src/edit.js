@@ -17,7 +17,7 @@ export default function Edit() {
 		<div { ...useBlockProps() }>
 			{ posts && posts.length ? (
 				<>
-					<div className="wp-block-block-test-cpt-items__container">
+					<div className="wp-block-gutenberg-cpt-items__container">
 						{ posts.map( ( post ) => {
 							const currTerms =
 								post._embedded &&
@@ -33,10 +33,10 @@ export default function Edit() {
 								post._embedded[ 'wp:featuredmedia' ][ 0 ];
 							return (
 								<div
-									className="wp-block-block-test-cpt-items__card"
+									className="wp-block-gutenberg-cpt-items__card"
 									key={ post.id }
 								>
-									<div className="wp-block-block-test-cpt-items__card__image">
+									<div className="wp-block-gutenberg-cpt-items__card__image">
 										<a href={ post.link }>
 											{ featuredImage && (
 												<img
@@ -50,31 +50,34 @@ export default function Edit() {
 											) }
 										</a>
 									</div>
-									<h5 className="wp-block-block-test-cpt-items__card-title">
+									<h5 className="wp-block-gutenberg-cpt-items__card-title">
 										<a href={ post.link }>
 											{ post.title.rendered ? (
 												<RawHTML>
 													{ post.title.rendered }
 												</RawHTML>
 											) : (
-												__( '(No title', 'cpt-items' )
+												__(
+													'(No title',
+													'gutenberg-cpt-items'
+												)
 											) }
 										</a>
 									</h5>
-									<p className="wp-block-block-test-cpt-items__card-text">
+									<p className="wp-block-gutenberg-cpt-items__card-text">
 										{ post.excerpt.rendered && (
 											<RawHTML>
 												{ post.excerpt.rendered }
 											</RawHTML>
 										) }
 									</p>
-									<div className="wp-block-block-test-cpt-items__card-tags">
+									<div className="wp-block-gutenberg-cpt-items__card-tags">
 										{ currTerms &&
 											currTerms.map( ( cat ) => {
 												return (
 													<>
 														<a
-															className="wp-block-block-test-cpt-items__card-tag"
+															className="wp-block-gutenberg-cpt-items__card-tag"
 															href={ cat.link }
 														>
 															#{ cat.name }
@@ -91,11 +94,19 @@ export default function Edit() {
 			) : (
 				<>
 					{ posts ? (
-						<p>{ __( 'Sorry, no players found', 'cpt-items' ) }</p>
+						<p>
+							{ __(
+								'Sorry, no players found',
+								'gutenberg-cpt-items'
+							) }
+						</p>
 					) : (
 						<Placeholder
 							icon="dashicons-games"
-							label={ __( 'Loading Players', 'cpt-items' ) }
+							label={ __(
+								'Loading Players',
+								'gutenberg-cpt-items'
+							) }
 						>
 							<Spinner />
 						</Placeholder>

@@ -1,4 +1,4 @@
-.wp-block-block-test-cpt-items {
+.wp-block-gutenberg-cpt-items {
 	&:not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( .wp-block-separator ):not( .woocommerce ) {
 		.entry-content & {
 			max-width: 1200px;
@@ -30,6 +30,7 @@
 				font-weight: 400;
 				color: #0066b3;
 				text-decoration: none;
+				text-underline-offset: none;
 			}
 		}
 
