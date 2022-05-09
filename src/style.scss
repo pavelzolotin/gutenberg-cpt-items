@@ -31,7 +31,7 @@
 		}
 
 		h5 {
-			margin: 0;
+			margin: 10px 0 0 0;
 			line-height: 1;
 
 			> a {
@@ -71,7 +71,7 @@
 	&__pagination {
 		display: flex;
 		justify-content: center;
-		max-width: 1200px;
+		max-width: 1400px;
 		margin-top: 50px;
 
 		> a.page-numbers:focus {
@@ -92,12 +92,4 @@
 			text-underline-offset: 5px;
 		}
 	}
-}
-
-.nav-links > .nav-previous > a {
-	background: transparent !important;
-}
-
-.nav-links > .nav-next > a {
-	background: transparent !important;
 }

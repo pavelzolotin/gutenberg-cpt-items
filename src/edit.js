@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { __ } from '@wordpress/i18n';
 import { RawHTML } from '@wordpress/element';
 import { useBlockProps } from '@wordpress/block-editor';
@@ -19,7 +20,7 @@ export default function Edit() {
 				<>
 					<div className="wp-block-gutenberg-cpt-items__container">
 						{ posts.map( ( post ) => {
-							const currTerms =
+							const terms =
 								post._embedded &&
 								post._embedded[ 'wp:term' ] &&
 								post._embedded[ 'wp:term' ].length > 0 &&
@@ -72,8 +73,8 @@ export default function Edit() {
 										) }
 									</div>
 									<div className="wp-block-gutenberg-cpt-items__card-tags">
-										{ currTerms &&
-											currTerms.map( ( cat ) => {
+										{ terms &&
+											terms.map( ( cat ) => {
 												return (
 													<>
 														<a
