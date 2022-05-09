@@ -2,7 +2,7 @@
 	"apiVersion": 2,
 	"name": "gutenberg/cpt-items",
 	"version": "0.1.0",
-	"title": "Custom Post Types",
+	"title": "Gutenberg CPT Items",
 	"category": "widgets",
 	"icon": "admin-post",
 	"description": "Dynamic block which display custom post types.",

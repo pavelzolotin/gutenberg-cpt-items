@@ -2,51 +2,63 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
 .entry-content .wp-block-gutenberg-cpt-items:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 .wp-block-gutenberg-cpt-items__container {
   display: flex;
   flex-wrap: wrap;
-  -moz-column-gap: 15px;
-       column-gap: 15px;
-  margin: -10px;
+  width: 100%;
 }
 .wp-block-gutenberg-cpt-items__card {
-  flex: 1 1 21%;
-  margin: 10px;
+  width: 25%;
+  padding: 0 10px 0 10px;
+}
+@media (max-width: 992px) {
+  .wp-block-gutenberg-cpt-items__card {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-gutenberg-cpt-items__card {
+    width: 100%;
+  }
 }
 .wp-block-gutenberg-cpt-items__card__image > a > img {
   margin-bottom: 10px;
 }
-.wp-block-gutenberg-cpt-items__card-title > a {
+.wp-block-gutenberg-cpt-items__card h5 {
+  margin: 0;
+  line-height: 1;
+}
+.wp-block-gutenberg-cpt-items__card h5 > a {
   font-size: 24px;
   line-height: 1;
   font-weight: 400;
   color: #0066b3;
   text-decoration: none;
-  text-underline-offset: none;
 }
 .wp-block-gutenberg-cpt-items__card-text {
   font-size: 18px;
-  line-height: 24px;
+  margin-top: 20px;
 }
 .wp-block-gutenberg-cpt-items__card-tags {
-  text-transform: lowercase;
   display: flex;
   flex-direction: row;
-  -moz-column-gap: 4px;
-       column-gap: 4px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  text-transform: lowercase;
+  margin: 20px 0 20px 0;
 }
-.wp-block-gutenberg-cpt-items__card-tags-tag {
+.wp-block-gutenberg-cpt-items__card-tag {
   display: inline-block;
-  text-decoration: none;
+  font-size: 14px;
   font-weight: 700;
-  font-size: 16px;
   line-height: 18px;
-  padding: 4px 12px;
+  padding: 8px 8px;
   background-color: #00aeef;
   color: #333;
+  text-decoration: none;
 }
 .wp-block-gutenberg-cpt-items__pagination {
   display: flex;

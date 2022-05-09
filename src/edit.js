@@ -64,13 +64,13 @@ export default function Edit() {
 											) }
 										</a>
 									</h5>
-									<p className="wp-block-gutenberg-cpt-items__card-text">
+									<div className="wp-block-gutenberg-cpt-items__card-text">
 										{ post.excerpt.rendered && (
 											<RawHTML>
 												{ post.excerpt.rendered }
 											</RawHTML>
 										) }
-									</p>
+									</div>
 									<div className="wp-block-gutenberg-cpt-items__card-tags">
 										{ currTerms &&
 											currTerms.map( ( cat ) => {

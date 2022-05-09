@@ -1,7 +1,7 @@
 .wp-block-gutenberg-cpt-items {
 	&:not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( .wp-block-separator ):not( .woocommerce ) {
 		.entry-content & {
-			max-width: 1200px;
+			max-width: 1400px;
 			margin: 0 auto;
 		}
 	}
@@ -9,13 +9,20 @@
 	&__container {
 		display: flex;
 		flex-wrap: wrap;
-		column-gap: 15px;
-		margin: -10px;
+		width: 100%;
 	}
 
 	&__card {
-		flex: 1 1 21%;
-		margin: 10px;
+		width: 25%;
+		padding: 0 10px 0 10px;
+
+		@media ( max-width: 992px ) {
+			width: 50%;
+		}
+
+		@media ( max-width: 768px ) {
+			width: 100%;
+		}
 
 		&__image {
 			> a > img {
@@ -23,38 +30,41 @@
 			}
 		}
 
-		&-title {
+		h5 {
+			margin: 0;
+			line-height: 1;
+
 			> a {
 				font-size: 24px;
 				line-height: 1;
 				font-weight: 400;
 				color: #0066b3;
 				text-decoration: none;
-				text-underline-offset: none;
 			}
 		}
 
 		&-text {
 			font-size: 18px;
-			line-height: 24px;
+			margin-top: 20px;
 		}
 
 		&-tags {
-			text-transform: lowercase;
 			display: flex;
 			flex-direction: row;
-			column-gap: 4px;
+			column-gap: 10px;
+			text-transform: lowercase;
+			margin: 20px 0 20px 0;
+		}
 
-			&-tag {
-				display: inline-block;
-				text-decoration: none;
-				font-weight: 700;
-				font-size: 16px;
-				line-height: 18px;
-				padding: 4px 12px;
-				background-color: #00aeef;
-				color: #333;
-			}
+		&-tag {
+			display: inline-block;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 18px;
+			padding: 8px 8px;
+			background-color: #00aeef;
+			color: #333;
+			text-decoration: none;
 		}
 	}
 

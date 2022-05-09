@@ -43,7 +43,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                     $permalink = get_permalink();
                     $excerpt = get_the_excerpt();
                     $thumb = get_the_post_thumbnail( $post_id, 'full' );
-                    $cur_terms = get_the_terms( $post_id, 'cpt_game' );
+                    $terms = get_the_terms( $post_id, 'cpt_game' );
 
                     $posts .= '<div class="wp-block-gutenberg-cpt-items__card">';
                         $posts .= '<div class="wp-block-gutenberg-cpt-items__card__image">';
@@ -54,9 +54,9 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                         $posts .= '</h5>';
                         $posts .= '<p class="wp-block-gutenberg-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
                         $posts .= '<div class="wp-block-gutenberg-cpt-items__card-tags">';
-                            if(is_array( $cur_terms )):
-                                foreach( $cur_terms as $cur_term ):
-                                    $posts .= '<a class="wp-block-gutenberg-cpt-items__card-tag" . href="' . esc_url( get_term_link( $cur_term->term_id, $cur_term->taxonomy ) ) . '">' .'#' . esc_html( $cur_term->name ) . '</a>';
+                            if(is_array( $terms )):
+                                foreach( $terms as $term ):
+                                    $posts .= '<a class="wp-block-gutenberg-cpt-items__card-tag" href="' . esc_url( get_term_link( $term->term_id, $term->taxonomy ) ) . '">' .'#' . esc_html( $term->name ) . '</a>';
                                 endforeach;
                             endif;
                         $posts .= '</div>';

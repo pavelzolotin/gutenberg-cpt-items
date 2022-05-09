@@ -1,5 +1,5 @@
 {
-	"name": "cpt-items",
+	"name": "gutenberg-cpt-items",
 	"version": "0.1.0",
 	"description": "Dynamic block which display custom post type items.",
 	"author": "Author",
