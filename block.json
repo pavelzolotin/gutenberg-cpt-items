@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "gutenberg/cpt-items",
+	"name": "gb-block/gutenberg-cpt-items",
 	"version": "0.1.0",
 	"title": "Gutenberg CPT Items",
 	"category": "widgets",
@@ -10,7 +10,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "cpt-items",
+	"textdomain": "gutenberg-cpt-items",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

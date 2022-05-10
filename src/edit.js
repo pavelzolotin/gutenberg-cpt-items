@@ -18,7 +18,7 @@ export default function Edit() {
 		<div { ...useBlockProps() }>
 			{ posts && posts.length ? (
 				<>
-					<div className="wp-block-gutenberg-cpt-items__container">
+					<div className="wp-block-gb-block-gutenberg-cpt-items__container">
 						{ posts.map( ( post ) => {
 							const terms =
 								post._embedded &&
@@ -34,10 +34,10 @@ export default function Edit() {
 								post._embedded[ 'wp:featuredmedia' ][ 0 ];
 							return (
 								<div
-									className="wp-block-gutenberg-cpt-items__card"
+									className="wp-block-gb-block-gutenberg-cpt-items__card"
 									key={ post.id }
 								>
-									<div className="wp-block-gutenberg-cpt-items__card__image">
+									<div className="wp-block-gb-block-gutenberg-cpt-items__card__image">
 										<a href={ post.link }>
 											{ featuredImage && (
 												<img
@@ -51,7 +51,7 @@ export default function Edit() {
 											) }
 										</a>
 									</div>
-									<h5 className="wp-block-gutenberg-cpt-items__card-title">
+									<h5 className="wp-block-gb-block-gutenberg-cpt-items__card-title">
 										<a href={ post.link }>
 											{ post.title.rendered ? (
 												<RawHTML>
@@ -65,20 +65,20 @@ export default function Edit() {
 											) }
 										</a>
 									</h5>
-									<div className="wp-block-gutenberg-cpt-items__card-text">
+									<div className="wp-block-gb-block-gutenberg-cpt-items__card-text">
 										{ post.excerpt.rendered && (
 											<RawHTML>
 												{ post.excerpt.rendered }
 											</RawHTML>
 										) }
 									</div>
-									<div className="wp-block-gutenberg-cpt-items__card-tags">
+									<div className="wp-block-gb-block-gutenberg-cpt-items__card-tags">
 										{ terms &&
 											terms.map( ( cat ) => {
 												return (
 													<>
 														<a
-															className="wp-block-gutenberg-cpt-items__card-tag"
+															className="wp-block-gb-block-gutenberg-cpt-items__card-tag"
 															href={ cat.link }
 														>
 															#{ cat.name }

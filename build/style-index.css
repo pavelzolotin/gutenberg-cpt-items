@@ -1,48 +1,48 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-.entry-content .wp-block-gutenberg-cpt-items:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+.entry-content .wp-block-gb-block-gutenberg-cpt-items:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
   max-width: 1400px;
   margin: 0 auto;
 }
-.wp-block-gutenberg-cpt-items__container {
+.wp-block-gb-block-gutenberg-cpt-items__container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
-.wp-block-gutenberg-cpt-items__card {
+.wp-block-gb-block-gutenberg-cpt-items__card {
   width: 25%;
   padding: 0 10px 0 10px;
 }
 @media (max-width: 992px) {
-  .wp-block-gutenberg-cpt-items__card {
+  .wp-block-gb-block-gutenberg-cpt-items__card {
     width: 50%;
   }
 }
 @media (max-width: 768px) {
-  .wp-block-gutenberg-cpt-items__card {
+  .wp-block-gb-block-gutenberg-cpt-items__card {
     width: 100%;
   }
 }
-.wp-block-gutenberg-cpt-items__card__image > a > img {
+.wp-block-gb-block-gutenberg-cpt-items__card__image > a > img {
   margin-bottom: 10px;
 }
-.wp-block-gutenberg-cpt-items__card h5 {
+.wp-block-gb-block-gutenberg-cpt-items__card h5 {
   margin: 10px 0 0 0;
   line-height: 1;
 }
-.wp-block-gutenberg-cpt-items__card h5 > a {
+.wp-block-gb-block-gutenberg-cpt-items__card h5 > a {
   font-size: 24px;
   line-height: 1;
   font-weight: 400;
   color: #0066b3;
   text-decoration: none;
 }
-.wp-block-gutenberg-cpt-items__card-text {
+.wp-block-gb-block-gutenberg-cpt-items__card-text {
   font-size: 18px;
   margin-top: 20px;
 }
-.wp-block-gutenberg-cpt-items__card-tags {
+.wp-block-gb-block-gutenberg-cpt-items__card-tags {
   display: flex;
   flex-direction: row;
   -moz-column-gap: 10px;
@@ -50,7 +50,7 @@
   text-transform: lowercase;
   margin: 20px 0 20px 0;
 }
-.wp-block-gutenberg-cpt-items__card-tag {
+.wp-block-gb-block-gutenberg-cpt-items__card-tag {
   display: inline-block;
   font-size: 14px;
   font-weight: 700;
@@ -60,16 +60,16 @@
   color: #333;
   text-decoration: none;
 }
-.wp-block-gutenberg-cpt-items__pagination {
+.wp-block-gb-block-gutenberg-cpt-items__pagination {
   display: flex;
   justify-content: center;
   max-width: 1400px;
   margin-top: 50px;
 }
-.wp-block-gutenberg-cpt-items__pagination > a.page-numbers:focus {
+.wp-block-gb-block-gutenberg-cpt-items__pagination > a.page-numbers:focus {
   background: transparent !important;
 }
-.wp-block-gutenberg-cpt-items__pagination > .page-numbers {
+.wp-block-gb-block-gutenberg-cpt-items__pagination > .page-numbers {
   font-size: 24px;
   line-height: 1;
   font-weight: 400;
@@ -77,7 +77,7 @@
   text-decoration: none;
   margin-right: 10px;
 }
-.wp-block-gutenberg-cpt-items__pagination > .current {
+.wp-block-gb-block-gutenberg-cpt-items__pagination > .current {
   text-decoration: underline;
   text-underline-offset: 5px;
 }

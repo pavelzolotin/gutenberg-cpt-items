@@ -9,6 +9,8 @@
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       gutenberg-cpt-items
+ *
+ * @package           gb-block
  */
 
 /**
@@ -19,7 +21,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 
-function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
+function gb_block_render_gutenberg_cpt_items_block( $attributes ) {
 
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
@@ -32,8 +34,8 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
 
 	$recent_posts = new WP_Query( $args );
 
-    $posts = '<div class="wp-block-gutenberg-cpt-items">';
-        $posts .= '<div class="wp-block-gutenberg-cpt-items__container">';
+    $posts = '<div class="wp-block-gb-block-gutenberg-cpt-items">';
+        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__container">';
             if ($recent_posts->have_posts()) {
                 while( $recent_posts->have_posts() ): $recent_posts->the_post();
 
@@ -45,18 +47,18 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                     $thumb = get_the_post_thumbnail( $post_id, 'full' );
                     $terms = get_the_terms( $post_id, 'cpt_game' );
 
-                    $posts .= '<div class="wp-block-gutenberg-cpt-items__card">';
-                        $posts .= '<div class="wp-block-gutenberg-cpt-items__card__image">';
+                    $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card">';
+                        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card__image">';
                             $posts .= '<a href="' . esc_url($permalink) . '">' . $thumb . '</a>';
                         $posts .= '</div>';
-                        $posts .= '<h5 class="wp-block-gutenberg-cpt-items__card-title">';
+                        $posts .= '<h5 class="wp-block-gb-block-gutenberg-cpt-items__card-title">';
                             $posts .= '<a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a>';
                         $posts .= '</h5>';
-                        $posts .= '<p class="wp-block-gutenberg-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
-                        $posts .= '<div class="wp-block-gutenberg-cpt-items__card-tags">';
+                        $posts .= '<p class="wp-block-gb-block-gutenberg-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
+                        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card-tags">';
                             if(is_array( $terms )):
                                 foreach( $terms as $term ):
-                                    $posts .= '<a class="wp-block-gutenberg-cpt-items__card-tag" href="' . esc_url( get_term_link( $term->term_id, $term->taxonomy ) ) . '">' .'#' . esc_html( $term->name ) . '</a>';
+                                    $posts .= '<a class="wp-block-gb-block-gutenberg-cpt-items__card-tag" href="' . esc_url( get_term_link( $term->term_id, $term->taxonomy ) ) . '">' .'#' . esc_html( $term->name ) . '</a>';
                                 endforeach;
                             endif;
                         $posts .= '</div>';
@@ -66,7 +68,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                 $posts .= '<p>' . __( 'No players', 'gutenberg-cpt-items' ) . '</p>';
             }
         $posts .= '</div>';
-        $posts .= '<div class="wp-block-gutenberg-cpt-items__pagination">';
+        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__pagination">';
             $posts .= paginate_links( array(
                 'base'    => str_replace( 100, '%#%', esc_url( get_pagenum_link( 100 ) ) ),
                 'current' => max( 1, get_query_var( 'paged' ) ),
@@ -80,10 +82,10 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
 
 }
 
-function gutenberg_cpt_items_block_init() {
+function gb_block_gutenberg_cpt_items_block_init() {
 	register_block_type( __DIR__,  array(
-		'render_callback' => 'gutenberg_cpt_items_render_recent_posts_block'
+		'render_callback' => 'gb_block_render_gutenberg_cpt_items_block'
 	) );
 }
 
-add_action( 'init', 'gutenberg_cpt_items_block_init' );
+add_action( 'init', 'gb_block_gutenberg_cpt_items_block_init' );
