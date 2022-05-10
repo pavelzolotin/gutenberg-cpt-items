@@ -41,7 +41,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
 
                     $post_id = get_the_ID();
                     $title = get_the_title();
-                    $title = $title ? $title : __( '(No title)','gutenberg-cpt-items' );
+                    $title = $title ? $title : esc_html__( '(No title)','gutenberg-cpt-items' );
                     $permalink = get_permalink();
                     $excerpt = get_the_excerpt();
                     $thumb = get_the_post_thumbnail( $post_id, 'full' );
@@ -58,14 +58,14 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                         $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card-tags">';
                             if(is_array( $terms )):
                                 foreach( $terms as $term ):
-                                    $posts .= '<a class="wp-block-gb-block-gutenberg-cpt-items__card-tag" href="' . esc_url( get_term_link( $term->term_id, $term->taxonomy ) ) . '">' .'#' . esc_html( $term->name ) . '</a>';
+                                    $posts .= '<a class="wp-block-gb-block-gutenberg-cpt-items__card-tag" href="' . esc_url( get_term_link( $term->term_id, $term->taxonomy ) ) . '">#' . esc_html( $term->name ) . '</a>';
                                 endforeach;
                             endif;
                         $posts .= '</div>';
                     $posts .= '</div>';
                 endwhile;
             } else {
-                $posts .= '<p>' . __( 'No players', 'gutenberg-cpt-items' ) . '</p>';
+                $posts .= '<p>' . esc_html__( 'No players', 'gutenberg-cpt-items' ) . '</p>';
             }
         $posts .= '</div>';
         $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__pagination">';
