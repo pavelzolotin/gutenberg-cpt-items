@@ -21,7 +21,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 
-function gb_block_render_gutenberg_cpt_items_block( $attributes ) {
+function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
 
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
@@ -82,10 +82,10 @@ function gb_block_render_gutenberg_cpt_items_block( $attributes ) {
 
 }
 
-function gb_block_gutenberg_cpt_items_block_init() {
+function gutenberg_cpt_items_block_init() {
 	register_block_type( __DIR__,  array(
-		'render_callback' => 'gb_block_render_gutenberg_cpt_items_block'
+		'render_callback' => 'gutenberg_cpt_items_render_recent_posts_block'
 	) );
 }
 
-add_action( 'init', 'gb_block_gutenberg_cpt_items_block_init' );
+add_action( 'init', 'gutenberg_cpt_items_block_init' );

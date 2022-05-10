@@ -7,12 +7,16 @@ import { Spinner, Placeholder } from '@wordpress/components';
 import './editor.scss';
 
 export default function Edit() {
+	const postsPerPage = 8;
+
 	const posts = useSelect( ( select ) => {
 		return select( 'core' ).getEntityRecords( 'postType', 'cpt_players', {
-			per_page: 8,
+			per_page: postsPerPage,
 			_embed: true,
 		} );
 	}, [] );
+
+	const postsNumbers = posts && posts.length;
 
 	return (
 		<div { ...useBlockProps() }>
@@ -90,6 +94,23 @@ export default function Edit() {
 								</div>
 							);
 						} ) }
+					</div>
+					<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
+						<span
+							aria-current="page"
+							className="page-numbers current"
+						>
+							1
+						</span>
+						<a className="page-numbers" href="#">
+							2
+						</a>
+						<a className="page-numbers" href="#">
+							{ postsNumbers }
+						</a>
+						<a className="next page-numbers" href="#">
+							{ __( 'Next »', 'gutenberg-cpt-items' ) }
+						</a>
 					</div>
 				</>
 			) : (

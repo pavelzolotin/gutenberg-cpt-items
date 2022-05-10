@@ -74,10 +74,6 @@
 		max-width: 1400px;
 		margin-top: 50px;
 
-		> a.page-numbers:focus {
-			background: transparent !important;
-		}
-
 		> .page-numbers {
 			font-size: 24px;
 			line-height: 1;
@@ -90,6 +86,12 @@
 		> .current {
 			text-decoration: underline;
 			text-underline-offset: 5px;
+		}
+
+		a.page-numbers:focus {
+			background: transparent;
+			outline: 2px solid #0066b3;
+			text-decoration: none;
 		}
 	}
 }

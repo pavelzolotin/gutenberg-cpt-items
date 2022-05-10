@@ -2,6 +2,10 @@
 	&.block-editor-block-list__block.wp-block {
 		max-width: 1400px;
 
+		a {
+			color: #0066b3;
+		}
+
 		.components-placeholder {
 			align-items: center;
 			background-color: transparent;
@@ -12,10 +16,8 @@
 			}
 		}
 
-		h5 {
-			> a {
-				color: #0066b3;
-			}
+		.wp-block-gb-block-gutenberg-cpt-items__card-tag {
+			color: #333;
 		}
 	}
 }
