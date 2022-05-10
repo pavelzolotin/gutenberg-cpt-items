@@ -9,6 +9,12 @@ import './editor.scss';
 export default function Edit() {
 	const postsPerPage = 8;
 
+	const allPosts = useSelect( ( select ) => {
+		return select( 'core' ).getEntityRecords( 'postType', 'cpt_players', {
+			per_page: -1,
+		} );
+	}, [] );
+
 	const posts = useSelect( ( select ) => {
 		return select( 'core' ).getEntityRecords( 'postType', 'cpt_players', {
 			per_page: postsPerPage,
@@ -16,7 +22,10 @@ export default function Edit() {
 		} );
 	}, [] );
 
-	const postsNumbers = posts && posts.length;
+	const allNumPages =
+		allPosts &&
+		allPosts.length &&
+		Math.ceil( ( allPosts.length + 1 ) / postsPerPage );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -95,23 +104,58 @@ export default function Edit() {
 							);
 						} ) }
 					</div>
-					<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
-						<span
-							aria-current="page"
-							className="page-numbers current"
-						>
-							1
-						</span>
-						<a className="page-numbers" href="#">
-							2
-						</a>
-						<a className="page-numbers" href="#">
-							{ postsNumbers }
-						</a>
-						<a className="next page-numbers" href="#">
-							{ __( 'Next »', 'gutenberg-cpt-items' ) }
-						</a>
-					</div>
+
+					{ allNumPages > 4 ? (
+						<>
+							<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
+								<span
+									aria-current="page"
+									className="page-numbers current"
+								>
+									1
+								</span>
+								<a className="page-numbers" href="#">
+									2
+								</a>
+								<span className="page-numbers dots">…</span>
+								<a className="page-numbers" href="#">
+									{ allNumPages }
+								</a>
+								<a className="next page-numbers" href="#">
+									{ __( 'Next »', 'gutenberg-cpt-items' ) }
+								</a>
+							</div>
+						</>
+					) : (
+						<>
+							<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
+								<span
+									aria-current="page"
+									className="page-numbers current"
+								>
+									1
+								</span>
+								{ [ ...Array( allNumPages + 1 ) ].map(
+									( e, i ) => {
+										return (
+											i > 1 && (
+												<a
+													key={ i }
+													className="page-numbers"
+													href="#"
+												>
+													{ i }
+												</a>
+											)
+										);
+									}
+								) }
+								<a className="next page-numbers" href="#">
+									{ __( 'Next »', 'gutenberg-cpt-items' ) }
+								</a>
+							</div>
+						</>
+					) }
 				</>
 			) : (
 				<>
