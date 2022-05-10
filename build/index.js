@@ -45,7 +45,7 @@ function Edit() {
       _embed: true
     });
   }, []);
-  const allNumPages = allPosts && allPosts.length && Math.ceil((allPosts.length + 1) / postsPerPage);
+  const allNumPages = allPosts && allPosts.length && Math.ceil(allPosts.length / postsPerPage);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), posts && posts.length ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-gb-block-gutenberg-cpt-items__container"
   }, posts.map(post => {

@@ -25,7 +25,7 @@ export default function Edit() {
 	const allNumPages =
 		allPosts &&
 		allPosts.length &&
-		Math.ceil( ( allPosts.length + 1 ) / postsPerPage );
+		Math.ceil( ( allPosts.length) / postsPerPage );
 
 	return (
 		<div { ...useBlockProps() }>
