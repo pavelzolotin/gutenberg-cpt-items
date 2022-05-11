@@ -10,16 +10,24 @@ export default function Edit() {
 	const postsPerPage = 8;
 
 	const allPosts = useSelect( ( select ) => {
-		return select( 'core' ).getEntityRecords( 'postType', 'cpt_players', {
-			per_page: -1,
-		} );
+		return select( 'core' ).getEntityRecords(
+			'postType',
+			'gutenberg_players',
+			{
+				per_page: -1,
+			}
+		);
 	}, [] );
 
 	const posts = useSelect( ( select ) => {
-		return select( 'core' ).getEntityRecords( 'postType', 'cpt_players', {
-			per_page: postsPerPage,
-			_embed: true,
-		} );
+		return select( 'core' ).getEntityRecords(
+			'postType',
+			'gutenberg_players',
+			{
+				per_page: postsPerPage,
+				_embed: true,
+			}
+		);
 	}, [] );
 
 	const allNumPages =

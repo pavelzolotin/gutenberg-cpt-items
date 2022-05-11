@@ -35,12 +35,12 @@ __webpack_require__.r(__webpack_exports__);
 function Edit() {
   const postsPerPage = 8;
   const allPosts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
-    return select('core').getEntityRecords('postType', 'cpt_players', {
+    return select('core').getEntityRecords('postType', 'gutenberg_players', {
       per_page: -1
     });
   }, []);
   const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
-    return select('core').getEntityRecords('postType', 'cpt_players', {
+    return select('core').getEntityRecords('postType', 'gutenberg_players', {
       per_page: postsPerPage,
       _embed: true
     });

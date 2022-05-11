@@ -29,7 +29,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
         'posts_per_page' => 8,
         'paged' => $paged,
 		'post_status' => 'publish',
-		'post_type' => 'cpt_players',
+		'post_type' => 'gutenberg_players',
 	);
 
 	$recent_posts = new WP_Query( $args );
@@ -45,7 +45,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                     $permalink = get_permalink();
                     $excerpt = get_the_excerpt();
                     $thumb = get_the_post_thumbnail( $post_id, 'full' );
-                    $terms = get_the_terms( $post_id, 'cpt_game' );
+                    $terms = get_the_terms( $post_id, 'gutenberg_game' );
 
                     $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card">';
                         $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card__image">';
