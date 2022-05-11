@@ -24,7 +24,12 @@
     width: 100%;
   }
 }
+.wp-block-gb-block-gutenberg-cpt-items__card__image {
+  height: 220px;
+}
 .wp-block-gb-block-gutenberg-cpt-items__card__image > a > img {
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-bottom: 10px;
 }
 .wp-block-gb-block-gutenberg-cpt-items__card h5 {

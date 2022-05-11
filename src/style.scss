@@ -1,7 +1,5 @@
 .wp-block-gb-block-gutenberg-cpt-items {
-
-	&:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
-
+	&:not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( .wp-block-separator ):not( .woocommerce ) {
 		.entry-content & {
 			max-width: 1400px;
 			margin: 0 auto;
@@ -27,8 +25,10 @@
 		}
 
 		&__image {
+			height: 220px;
 
 			> a > img {
+				object-fit: cover;
 				margin-bottom: 10px;
 			}
 		}
