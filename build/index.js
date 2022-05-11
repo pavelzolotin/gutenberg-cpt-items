@@ -83,7 +83,10 @@ function Edit() {
   }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "page-numbers",
     href: "#"
-  }, "2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, "2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "page-numbers",
+    href: "#"
+  }, "3"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "page-numbers dots"
   }, "\u2026"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "page-numbers",
@@ -96,12 +99,12 @@ function Edit() {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-current": "page",
     className: "page-numbers current"
-  }, "1"), [...Array(allNumPages + 1)].map((e, i) => {
-    return i > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      key: i,
+  }, "1"), [...Array(allNumPages + 1)].map((el, index) => {
+    return index > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      key: index,
       className: "page-numbers",
       href: "#"
-    }, i);
+    }, index);
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "next page-numbers",
     href: "#"

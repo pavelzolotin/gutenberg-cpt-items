@@ -78,10 +78,5 @@
   text-decoration: underline;
   text-underline-offset: 5px;
 }
-.wp-block-gb-block-gutenberg-cpt-items__pagination a.page-numbers:focus {
-  background: transparent;
-  outline: 2px solid #0066b3;
-  text-decoration: none;
-}
 
 /*# sourceMappingURL=style-index.css.map*/

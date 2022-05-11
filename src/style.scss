@@ -1,5 +1,7 @@
 .wp-block-gb-block-gutenberg-cpt-items {
-	&:not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( .wp-block-separator ):not( .woocommerce ) {
+
+	&:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+
 		.entry-content & {
 			max-width: 1400px;
 			margin: 0 auto;
@@ -25,6 +27,7 @@
 		}
 
 		&__image {
+
 			> a > img {
 				margin-bottom: 10px;
 			}
@@ -86,12 +89,6 @@
 		> .current {
 			text-decoration: underline;
 			text-underline-offset: 5px;
-		}
-
-		a.page-numbers:focus {
-			background: transparent;
-			outline: 2px solid #0066b3;
-			text-decoration: none;
 		}
 	}
 }

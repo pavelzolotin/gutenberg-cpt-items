@@ -25,7 +25,7 @@ export default function Edit() {
 	const allNumPages =
 		allPosts &&
 		allPosts.length &&
-		Math.ceil( ( allPosts.length) / postsPerPage );
+		Math.ceil( allPosts.length / postsPerPage );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -117,6 +117,9 @@ export default function Edit() {
 								<a className="page-numbers" href="#">
 									2
 								</a>
+								<a className="page-numbers" href="#">
+									3
+								</a>
 								<span className="page-numbers dots">…</span>
 								<a className="page-numbers" href="#">
 									{ allNumPages }
@@ -136,15 +139,15 @@ export default function Edit() {
 									1
 								</span>
 								{ [ ...Array( allNumPages + 1 ) ].map(
-									( e, i ) => {
+									( el, index ) => {
 										return (
-											i > 1 && (
+											index > 1 && (
 												<a
-													key={ i }
+													key={ index }
 													className="page-numbers"
 													href="#"
 												>
-													{ i }
+													{ index }
 												</a>
 											)
 										);
