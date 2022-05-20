@@ -46,10 +46,17 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                     $excerpt = get_the_excerpt();
                     $thumb = get_the_post_thumbnail( $post_id, 'full' );
                     $terms = get_the_terms( $post_id, 'gutenberg_game' );
+                    $media_meta = get_post_meta( $post_id, '_gb_sidebar_media_url_meta', true );
 
                     $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card">';
-                        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card__image">';
-                            $posts .= '<a href="' . esc_url($permalink) . '">' . $thumb . '</a>';
+                        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card__media">';
+                        $posts .= '<a href="' . esc_url( $permalink ) . '">';
+                        if( !empty( $media_meta ) ):
+                          $posts .= '<video src="' . $media_meta .'" className="wp-block-gb-block-gutenberg-cpt-items__video" autoPlay muted loop></video>';
+                        else:
+                            $posts .= $thumb;
+                        endif;
+                        $posts .= '</a>';
                         $posts .= '</div>';
                         $posts .= '<h5 class="wp-block-gb-block-gutenberg-cpt-items__card-title">';
                             $posts .= '<a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a>';

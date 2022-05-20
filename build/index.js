@@ -50,18 +50,26 @@ function Edit() {
     className: "wp-block-gb-block-gutenberg-cpt-items__container"
   }, posts.map(post => {
     const terms = post._embedded && post._embedded['wp:term'] && post._embedded['wp:term'].length > 0 && post._embedded['wp:term'][0];
+    const featuredVideo = post.meta && post.meta._gb_sidebar_media_url_meta;
     const featuredImage = post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'].length > 0 && post._embedded['wp:featuredmedia'][0];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "wp-block-gb-block-gutenberg-cpt-items__card",
       key: post.id
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "wp-block-gb-block-gutenberg-cpt-items__card__image"
+      className: "wp-block-gb-block-gutenberg-cpt-items__card__media"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: post.link
-    }, featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }, featuredVideo ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
+      src: featuredVideo,
+      className: "wp-block-gb-block-gutenberg-cpt-items__video",
+      autoPlay: true,
+      muted: true,
+      loop: true
+    }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: featuredImage.id ? `wp-image-${featuredImage.id}` : null,
       src: featuredImage.source_url,
       alt: featuredImage.alt_text
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
       className: "wp-block-gb-block-gutenberg-cpt-items__card-title"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: post.link

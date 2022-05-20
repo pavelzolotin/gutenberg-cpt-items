@@ -24,10 +24,13 @@
     width: 100%;
   }
 }
-.wp-block-gb-block-gutenberg-cpt-items__card__image {
-  height: 220px;
+.wp-block-gb-block-gutenberg-cpt-items__card__media {
+  height: 215px;
 }
-.wp-block-gb-block-gutenberg-cpt-items__card__image > a > img {
+.wp-block-gb-block-gutenberg-cpt-items__card__media > a > img,
+.wp-block-gb-block-gutenberg-cpt-items__card__media > a > video {
+  width: 100% !important;
+  height: 100% !important;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 10px;

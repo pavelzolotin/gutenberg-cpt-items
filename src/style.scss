@@ -24,10 +24,13 @@
 			width: 100%;
 		}
 
-		&__image {
+		&__media {
 			height: 215px;
 
-			> a > img {
+			> a > img,
+			> a > video {
+				width: 100% !important;
+				height: 100% !important;
 				object-fit: cover;
 				margin-bottom: 10px;
 			}

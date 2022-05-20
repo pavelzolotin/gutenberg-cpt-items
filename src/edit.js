@@ -47,6 +47,10 @@ export default function Edit() {
 								post._embedded[ 'wp:term' ].length > 0 &&
 								post._embedded[ 'wp:term' ][ 0 ];
 
+							const featuredVideo =
+								post.meta &&
+								post.meta._gb_sidebar_media_url_meta;
+
 							const featuredImage =
 								post._embedded &&
 								post._embedded[ 'wp:featuredmedia' ] &&
@@ -58,17 +62,34 @@ export default function Edit() {
 									className="wp-block-gb-block-gutenberg-cpt-items__card"
 									key={ post.id }
 								>
-									<div className="wp-block-gb-block-gutenberg-cpt-items__card__image">
+									<div className="wp-block-gb-block-gutenberg-cpt-items__card__media">
 										<a href={ post.link }>
-											{ featuredImage && (
-												<img
-													src={
-														featuredImage.source_url
-													}
-													alt={
-														featuredImage.alt_text
-													}
+											{ featuredVideo ? (
+												<video
+													src={ featuredVideo }
+													className="wp-block-gb-block-gutenberg-cpt-items__video"
+													autoPlay
+													muted
+													loop
 												/>
+											) : (
+												<>
+													{ featuredImage && (
+														<img
+															className={
+																featuredImage.id
+																	? `wp-image-${ featuredImage.id }`
+																	: null
+															}
+															src={
+																featuredImage.source_url
+															}
+															alt={
+																featuredImage.alt_text
+															}
+														/>
+													) }
+												</>
 											) }
 										</a>
 									</div>
