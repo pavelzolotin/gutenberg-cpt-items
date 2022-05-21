@@ -50,13 +50,13 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
 
                     $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card">';
                         $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card__media">';
-                        $posts .= '<a href="' . esc_url( $permalink ) . '">';
-                        if( !empty( $media_meta ) ):
-                          $posts .= '<video src="' . $media_meta .'" className="wp-block-gb-block-gutenberg-cpt-items__video" autoPlay muted loop></video>';
-                        else:
-                            $posts .= $thumb;
-                        endif;
-                        $posts .= '</a>';
+                            $posts .= '<a href="' . esc_url( $permalink ) . '">';
+                                if( !empty( $media_meta ) ):
+                                    $posts .= '<video src="' . esc_url( $media_meta ) .'" className="wp-block-gb-block-gutenberg-cpt-items__video" autoPlay muted loop></video>';
+                                else:
+                                    $posts .= $thumb;
+                                endif;
+                            $posts .= '</a>';
                         $posts .= '</div>';
                         $posts .= '<h5 class="wp-block-gb-block-gutenberg-cpt-items__card-title">';
                             $posts .= '<a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a>';

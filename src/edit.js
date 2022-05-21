@@ -67,7 +67,11 @@ export default function Edit() {
 											{ featuredVideo ? (
 												<video
 													src={ featuredVideo }
-													className="wp-block-gb-block-gutenberg-cpt-items__video"
+													className={
+														featuredVideo.id
+															? `wp-block-gb-block-gutenberg-cpt-items__video wp-video-${ featuredVideo.id }`
+															: null
+													}
 													autoPlay
 													muted
 													loop
@@ -78,7 +82,7 @@ export default function Edit() {
 														<img
 															className={
 																featuredImage.id
-																	? `wp-image-${ featuredImage.id }`
+																	? `wp-block-gb-block-gutenberg-cpt-items__img wp-image-${ featuredImage.id }`
 																	: null
 															}
 															src={

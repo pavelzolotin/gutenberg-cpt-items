@@ -61,12 +61,12 @@ function Edit() {
       href: post.link
     }, featuredVideo ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
       src: featuredVideo,
-      className: "wp-block-gb-block-gutenberg-cpt-items__video",
+      className: featuredVideo.id ? `wp-block-gb-block-gutenberg-cpt-items__video wp-video-${featuredVideo.id}` : null,
       autoPlay: true,
       muted: true,
       loop: true
     }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      className: featuredImage.id ? `wp-image-${featuredImage.id}` : null,
+      className: featuredImage.id ? `wp-block-gb-block-gutenberg-cpt-items__img wp-image-${featuredImage.id}` : null,
       src: featuredImage.source_url,
       alt: featuredImage.alt_text
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
