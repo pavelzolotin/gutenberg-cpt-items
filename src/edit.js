@@ -206,9 +206,7 @@ export default function Edit() {
 								</>
 							);
 						} else {
-							return (
-								<div className="wp-block-gb-block-gutenberg-cpt-items__pagination"></div>
-							);
+							return undefined;
 						}
 					} )() }
 				</>

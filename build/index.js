@@ -123,9 +123,7 @@ function Edit() {
         href: "#"
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Next »', 'gutenberg-cpt-items'))));
     } else {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "wp-block-gb-block-gutenberg-cpt-items__pagination"
-      });
+      return undefined;
     }
   })()) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, posts ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Sorry, no players found', 'gutenberg-cpt-items')) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, {
     icon: "dashicons-games",

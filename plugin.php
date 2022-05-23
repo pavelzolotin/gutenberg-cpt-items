@@ -75,13 +75,21 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                 $posts .= '<p>' . esc_html__( 'No players', 'gutenberg-cpt-items' ) . '</p>';
             }
         $posts .= '</div>';
-        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__pagination">';
+        if ( ($recent_posts->found_posts) >= 9 ) :
+            $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__pagination">';
+                $posts .= paginate_links( array(
+                    'base'    => str_replace( 100, '%#%', esc_url( get_pagenum_link( 100 ) ) ),
+                    'current' => max( 1, get_query_var( 'paged' ) ),
+                    'total'   => $recent_posts->max_num_pages
+                ) );
+            $posts .= '</div>';
+        else:
             $posts .= paginate_links( array(
                 'base'    => str_replace( 100, '%#%', esc_url( get_pagenum_link( 100 ) ) ),
                 'current' => max( 1, get_query_var( 'paged' ) ),
                 'total'   => $recent_posts->max_num_pages
             ) );
-        $posts .= '</div>';
+        endif;
     $posts .= '</div>';
 
     wp_reset_postdata();
