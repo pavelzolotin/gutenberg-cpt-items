@@ -49,7 +49,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                     $media_meta = get_post_meta( $post_id, '_gb_sidebar_media_url_meta', true );
 
                     $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card">';
-                        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card__media">';
+                        $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__media">';
                             $posts .= '<a href="' . esc_url( $permalink ) . '">';
                                 if( !empty( $media_meta ) ):
                                     $posts .= '<video src="' . esc_url( $media_meta ) .'" className="wp-block-gb-block-gutenberg-cpt-items__video" autoPlay muted loop></video>';

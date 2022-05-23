@@ -35,6 +35,8 @@ export default function Edit() {
 		allPosts.length &&
 		Math.ceil( allPosts.length / postsPerPage );
 
+	const postNum = allPosts && allPosts.length;
+
 	return (
 		<div { ...useBlockProps() }>
 			{ posts && posts.length ? (
@@ -62,7 +64,7 @@ export default function Edit() {
 									className="wp-block-gb-block-gutenberg-cpt-items__card"
 									key={ post.id }
 								>
-									<div className="wp-block-gb-block-gutenberg-cpt-items__card__media">
+									<div className="wp-block-gb-block-gutenberg-cpt-items__media">
 										<a href={ post.link }>
 											{ featuredVideo ? (
 												<video
@@ -138,60 +140,77 @@ export default function Edit() {
 						} ) }
 					</div>
 
-					{ allNumPages > 4 ? (
-						<>
-							<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
-								<span
-									aria-current="page"
-									className="page-numbers current"
-								>
-									1
-								</span>
-								<a className="page-numbers" href="#">
-									2
-								</a>
-								<a className="page-numbers" href="#">
-									3
-								</a>
-								<span className="page-numbers dots">…</span>
-								<a className="page-numbers" href="#">
-									{ allNumPages }
-								</a>
-								<a className="next page-numbers" href="#">
-									{ __( 'Next »', 'gutenberg-cpt-items' ) }
-								</a>
-							</div>
-						</>
-					) : (
-						<>
-							<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
-								<span
-									aria-current="page"
-									className="page-numbers current"
-								>
-									1
-								</span>
-								{ [ ...Array( allNumPages + 1 ) ].map(
-									( el, index ) => {
-										return (
-											index > 1 && (
-												<a
-													key={ index }
-													className="page-numbers"
-													href="#"
-												>
-													{ index }
-												</a>
-											)
-										);
-									}
-								) }
-								<a className="next page-numbers" href="#">
-									{ __( 'Next »', 'gutenberg-cpt-items' ) }
-								</a>
-							</div>
-						</>
-					) }
+					{ ( () => {
+						if ( allNumPages > 4 ) {
+							<>
+								<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
+									<span
+										aria-current="page"
+										className="page-numbers current"
+									>
+										1
+									</span>
+									<a className="page-numbers" href="#">
+										2
+									</a>
+									<a className="page-numbers" href="#">
+										3
+									</a>
+									<span className="page-numbers dots">…</span>
+									<a className="page-numbers" href="#">
+										{ allNumPages }
+									</a>
+									<a className="next page-numbers" href="#">
+										{ __(
+											'Next »',
+											'gutenberg-cpt-items'
+										) }
+									</a>
+								</div>
+							</>;
+						} else if ( postNum > 8 ) {
+							return (
+								<>
+									<div className="wp-block-gb-block-gutenberg-cpt-items__pagination">
+										<span
+											aria-current="page"
+											className="page-numbers current"
+										>
+											1
+										</span>
+										{ [ ...Array( allNumPages + 1 ) ].map(
+											( el, index ) => {
+												return (
+													index > 1 && (
+														<a
+															key={ index }
+															className="page-numbers"
+															href="#"
+														>
+															{ index }
+														</a>
+													)
+												);
+											}
+										) }
+										<a
+											className="next page-numbers"
+											href="#"
+										>
+											{ __(
+												'Next »',
+												'gutenberg-cpt-items'
+											) }
+										</a>
+									</div>
+								</>
+							);
+						} else {
+							return (
+								<div className="wp-block-gb-block-gutenberg-cpt-items__pagination"></div>
+							);
+						}
+					} )() }
 				</>
 			) : (
 				<>
