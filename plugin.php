@@ -62,6 +62,7 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                             $posts .= '<a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a>';
                         $posts .= '</h5>';
                         $posts .= '<p class="wp-block-gb-block-gutenberg-cpt-items__card-text">' . esc_html( $excerpt ) . '</p>';
+                        if(is_array( $terms )):
                         $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__card-tags">';
                             if(is_array( $terms )):
                                 foreach( $terms as $term ):
@@ -69,13 +70,14 @@ function gutenberg_cpt_items_render_recent_posts_block( $attributes ) {
                                 endforeach;
                             endif;
                         $posts .= '</div>';
+                    endif;
                     $posts .= '</div>';
                 endwhile;
             } else {
                 $posts .= '<p>' . esc_html__( 'No players', 'gutenberg-cpt-items' ) . '</p>';
             }
         $posts .= '</div>';
-        if ( ($recent_posts->found_posts) >= 9 ) :
+        if ( ($recent_posts->max_num_pages) >= 2 ) :
             $posts .= '<div class="wp-block-gb-block-gutenberg-cpt-items__pagination">';
                 $posts .= paginate_links( array(
                     'base'    => str_replace( 100, '%#%', esc_url( get_pagenum_link( 100 ) ) ),
